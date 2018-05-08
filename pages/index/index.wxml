@@ -1,0 +1,21 @@
+<!--pages/index/index.wxml-->
+<swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">    
+    <block wx:for="{{adverInfo}}" wx:key="item.link">    
+      <swiper-item>    
+          <navigator url="{{item.link}}" hover-class="navigator-hover">    
+          <image src="{{item.imgUrl}}" class="slide-image"/>  
+          </navigator>     
+      </swiper-item>    
+    </block>    
+</swiper> 
+<view class="nav-box">
+  <block wx:for="{{centerNavInfo}}"  wx:key="item.imgUrl">
+    <view class="nav-view">
+      <image class="nav-img" src="{{item.imgUrl}}" style="background-color: {{item.bgcolor}};"></image>
+      <text>{{item.title}}</text>
+    </view>
+  </block> 
+</view>
+<view class="wn-tuijian" style="">
+    <text>为您推荐</text>
+</view>
