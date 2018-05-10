@@ -7,27 +7,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hiddenLoading: true,
+    hiddenLoading: true ,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this
     this.setData({
-      hiddenLoading: !this.data.hiddenLoading
-    });
-    var that = this
+      hiddenLoading: !that.data.hiddenLoading
+    })    
     if (wx.getStorageSync("inTheaters")) {// 本地如果有缓存，提前渲染
       that.setData({
         inTheaters: wx.getStorageSync("inTheaters")
       })
     }
-    this.getInTheaters();
-
+    this.getInTheaters()
     this.setData({
-      hiddenLoading: !this.data.hiddenLoading
-    });
+      hiddenLoading: !that.data.hiddenLoading
+    })
   },
   goMovieDetail: function (e) {
     // console.log("弹出框", e.currentTarget.dataset)
@@ -35,7 +34,7 @@ Page({
       url: '../../moviedetail/moviedetail?id=' + e.currentTarget.dataset.movie_id
     })
   },
-  getInTheaters: function () {
+  getInTheaters: function () {   
     console.log("getInTheaters");
     var that = this;
     wx.request({

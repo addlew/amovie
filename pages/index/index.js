@@ -1,6 +1,7 @@
 // pages/index/index.js
 var app = getApp()
 const HOST = getApp().globalData.HOST
+const movieid=""
 Page({
 
   /**
@@ -19,34 +20,9 @@ Page({
   onLoad: function (options) {
     this.getAdverInfo();//从后端获取centerNavInfo
     this.getCenterNavInfo();//从后端获取centerNavInfo
-    //this.getDouBan();//从后端获取getDouBan
+    this.getIndexMovie();//从后端获取 indexMovie
   },
-
-  getDouBan: function () {
-    console.log("DouBan");
-    var that = this;
-    wx.request({
-      url: 'http://127.0.0.1/test/1/1/index.php',
-      method: 'GET',
-     
-      success: function (res) {
-        if (res.statusCode === 200) {
-          console.log("succeed");
-          var DouBan = res.data
-          that.setData({ // 再次渲染
-            DouBan: DouBan
-          })
-          console.log("覆盖DouBan缓存数据")
-          console.log(DouBan)
-          wx.setStorageSync("DouBan", DouBan) // 覆盖缓存数据
-        }
-      },
-      fail: function (e) {
-        console.log("getDouBan请求失败"),
-          console.log(e)
-      }
-    })
-  },
+  
   getCenterNavInfo: function () {
     var that = this;
     wx.request({
@@ -95,6 +71,38 @@ Page({
         console.log("getAdverInfo请求失败"),
           console.log(e)
       }
+    })
+  },
+
+  getIndexMovie:function(){    
+    var that = this;
+    wx.request({
+      url: HOST + '/api/index/getIndexMovie.php',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        if (res.statusCode === 200) {
+          var indexMovie = res.data
+          that.setData({ // 再次渲染
+            indexMovie: indexMovie
+          })
+          console.log("覆盖 indexMovie 缓存数据", indexMovie)
+          //console.log(indexMovie)
+          wx.setStorageSync("indexMovie", indexMovie) // 覆盖缓存数据
+        }
+      },
+      fail: function (e) {
+        console.log("getIndexMovie 请求失败"),
+          console.log(e)
+      }
+    })
+  },
+  goMovieDetail: function (e) {
+    // console.log("弹出框", e.currentTarget.dataset)
+    wx.navigateTo({
+      url: '../moviedetail/moviedetail?id=' + e.currentTarget.dataset.movie_id
     })
   },
 

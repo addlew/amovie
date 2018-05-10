@@ -1,7 +1,7 @@
 // pages/moviedetail/moviedetail.js
 var app = getApp()
 const HOST = getApp().globalData.HOST
-const baiDuYun= { }
+const baiDuYun= {}
 Page({
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
@@ -27,7 +27,7 @@ Page({
     hiddenLoading: true,
     baiDuYun: {
       url: "",
-      passWord: "",
+      password: "",
     }
   },
 
@@ -35,7 +35,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("百度云",baiDuYun)
+    
     this.setData({
       hiddenLoading: !this.data.hiddenLoading
     });
@@ -45,12 +45,38 @@ Page({
     })
     console.log("id", options.id)
     that.getMovieDetail(options.id)
-
+    that.getBaDuYun(options.id)
     this.setData({
       hiddenLoading: !this.data.hiddenLoading
     });
   },
-
+  getBaDuYun: function (id) {
+    console.log("getBaDuYun");
+    var that = this;
+    wx.request({
+      url: HOST + 'api/index/getBaDuYun.php',
+      method: 'GET',
+      data: {
+        id: id
+      },
+      success: function (res) {
+        if (res.statusCode === 200) {
+          console.log("getBaDuYun succeed");
+          var baiDuYun = res.data
+          that.setData({ // 再次渲染
+            baiDuYun: baiDuYun
+          })
+          console.log("覆盖 baiDuYun 缓存数据")
+          console.log("baiDuYun", baiDuYun)
+          wx.setStorageSync("baiDuYun", baiDuYun) // 覆盖缓存数据
+        }
+      },
+      fail: function (e) {
+        console.log("getBaDuYun 请求失败"),
+          console.log(e)
+      }
+    })
+  },
   getMovieDetail: function (id) {
     console.log("getMovieDetail");
     var that = this;
@@ -80,7 +106,7 @@ Page({
   },
   /*在线链接复制到剪切板*/
   setClipboardDataOnLine: function (data) {
-    //console.log(data.currentTarget.dataset)    
+    console.log(data.currentTarget.dataset)    
     wx.setClipboardData({
       data: "http://video.eyunzhu.com/?mode=search&k=" + data.currentTarget.dataset.url,
       success: function (res) {

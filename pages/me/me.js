@@ -14,7 +14,17 @@ Page({
   onLoad: function (options) {
   
   },
-
+  clearStorageSync:function(){
+    try {
+      wx.clearStorageSync()
+      wx.navigateTo({
+        url: '../start/start'
+      })   
+    } catch (e) {
+      // Do something when catch error
+    }
+  },
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

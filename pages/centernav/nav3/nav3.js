@@ -14,21 +14,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      hiddenLoading: !this.data.hiddenLoading
-    });
-    
-    
     var that = this
+    this.setData({
+      hiddenLoading: !that.data.hiddenLoading
+    });
     if (wx.getStorageSync("comingSoon")) {// 本地如果有缓存，提前渲染
       that.setData({
         comingSoon: wx.getStorageSync("comingSoon")
       })
     }
     this.getComingSoon();
-
     this.setData({
-      hiddenLoading: !this.data.hiddenLoading
+      hiddenLoading: !that.data.hiddenLoading
     });
   },
   goMovieDetail: function (e) {

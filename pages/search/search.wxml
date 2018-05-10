@@ -5,8 +5,7 @@
   <view class="input">
   <form bindsubmit="formBindsubmit">
       <input name="searchInput" placeholder="请输入电影名" auto-focus/> 
-      <button formType="submit"><image src="../../images/icon/ss1.png"  ></image></button>
-        
+      <button formType="submit"><image src="../../images/icon/ss1.png"  ></image></button>        
   </form>   
   </view>
  

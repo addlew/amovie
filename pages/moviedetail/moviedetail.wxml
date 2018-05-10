@@ -25,26 +25,30 @@
 <view class="content">
       <view class="content-item">
         <view class='line'>在线观看：
-            <view class='setClipboardData' bindtap='setClipboardDataOnLine' data-url='{{movieDetail.url}}'>
+            <view class='setClipboardData' bindtap='setClipboardDataOnLine' data-url='{{movieDetail.title}}'>
                 点击复制  在线观看链接
             </view>
         </view>
         <view class='line'>百度云链： 
-            <view class='setClipboardData' bindtap='setClipboardDataBaiDuYun' data-url='{{baiDuYun.url}}' wx:if="{{baiDuYun.url}}">
-                点击复制  百度云链接
-            </view>
-            <view class='setClipboardData' wx:else>
-              暂无
-            </view>        
+            <block wx:if="{{baiDuYun.url}}">            
+                    <view class='setClipboardData' bindtap='setClipboardDataBaiDuYun' data-url='{{baiDuYun.url}}' wx:if="{{baiDuYun.url}}">
+                        点击复制  百度云链接
+                    </view>
+                                
+                <view class='line'>百度云密码： 
+                    <view class='setClipboardData' bindtap='setClipboardDataBaiDuYun' data-url='{{baiDuYun.password}}' wx:if="{{baiDuYun.password}}">
+                            <text>{{baiDuYun.password}}</text> 点击复制 
+                    </view>
+                </view>
+            </block >
+            <block wx:elseif>  
+                  <view class='setClipboardData'>
+                      暂无
+                    </view> 
+            </block >
         </view>
-        <view class='line'>百度云密码： 
-            <view class='setClipboardData' bindtap='setClipboardDataBaiDuYun' data-url='{{baiDuYun.passWord}}' wx:if="{{baiDuYun.passWord}}">
-                    <text>{{baiDuYun.passWord}}</text> 点击复制  
-            </view>
-            <view class='setClipboardData' wx:else>
-              暂无
-            </view> 
-        </view>
+
+
     </view>  
   </view>
 <button open-type="share" hover-class="none" data-share='你好'>分享</button>
