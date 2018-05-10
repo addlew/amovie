@@ -24,13 +24,42 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 2,
+			"list": [
+				{
+					"id": 0,
+					"name": "正在热播",
+					"pathName": "pages/centernav/nav0/nav0",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "top250",
+					"pathName": "pages/centernav/nav1/nav1",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "电影详情",
+					"pathName": "pages/moviedetail/moviedetail",
+					"query": "id=1764796"
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/search",
+					"query": ""
+				}
+			]
 		}
 	}
 }

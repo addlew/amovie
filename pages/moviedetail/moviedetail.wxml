@@ -1,0 +1,60 @@
+<loading hidden="{{hiddenLoading}}">
+  加载中...
+ </loading>
+<block wx:if="{{hiddenLoading}}">
+<view class="main">
+  <view class="item" >
+    <image src="{{movieDetail.images.large}}"></image>
+    <view class="item-right">
+      <view class="item-title">{{movieDetail.title}}</view>
+      <view class="item-average">豆瓣评分：  <text style='color:red;'>{{movieDetail.rating.average}}</text> </view>
+      <view class="item-genres">类型：<text>{{movieDetail.genres}}</text></view>
+      <view class="item-year">年份： <text>{{movieDetail.year}}</text></view>
+      <view class="item-directors">导演:
+          <text wx:for="{{movieDetail.directors}}" wx:key="item.title">{{item.name}}/</text>
+      </view>
+      <view class="item-casts">主演:
+          <text wx:for="{{movieDetail.casts}}" wx:key="item.title">{{item.name}}/</text>
+      </view>
+    </view>
+  </view>  
+<view class="content-item">
+  <view class="summary">剧情简介：</view>
+<text>{{movieDetail.summary}} </text>（<text selectable="true">{{movieDetail.id}}</text>）
+</view>
+<view class="content">
+      <view class="content-item">
+        <view class='line'>在线观看：
+            <view class='setClipboardData' bindtap='setClipboardDataOnLine' data-url='{{movieDetail.url}}'>
+                点击复制  在线观看链接
+            </view>
+        </view>
+        <view class='line'>百度云链： 
+            <view class='setClipboardData' bindtap='setClipboardDataBaiDuYun' data-url='{{baiDuYun.url}}' wx:if="{{baiDuYun.url}}">
+                点击复制  百度云链接
+            </view>
+            <view class='setClipboardData' wx:else>
+              暂无
+            </view>        
+        </view>
+        <view class='line'>百度云密码： 
+            <view class='setClipboardData' bindtap='setClipboardDataBaiDuYun' data-url='{{baiDuYun.passWord}}' wx:if="{{baiDuYun.passWord}}">
+                    <text>{{baiDuYun.passWord}}</text> 点击复制  
+            </view>
+            <view class='setClipboardData' wx:else>
+              暂无
+            </view> 
+        </view>
+    </view>  
+  </view>
+<button open-type="share" hover-class="none" data-share='你好'>分享</button>
+<view class="summary">主要演员：</view>  
+  <view wx:for="{{movieDetail.casts}}" wx:key="{{item.name}}">
+      <view class="summary-img">
+        <image src="{{item.avatars.large}}"></image>
+        <view>{{item.name}}</view>
+      </view>
+  </view>  
+</view>
+
+</block>

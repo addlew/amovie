@@ -1,0 +1,55 @@
+.header{
+  text-align: center;
+  font-size: 40rpx;
+  margin: 0 20rpx;
+  padding: 20rpx 0;
+  
+}
+.header view{
+  background: #84C1FF;
+  border-radius: 20rpx;
+  color: white;
+  padding: 20rpx;
+  border: 2rpx solid #696969;
+}
+.main{
+  padding: 10rpx 20rpx;
+  font-size: 30rpx;
+}
+.item{
+
+}
+.item image{
+  width: 202rpx;
+  height: 283rpx;
+  border-radius: 20rpx;
+}
+.item-right{
+  width: 480rpx;
+  height: 283rpx;
+  float: right;
+  padding: 0 10rpx;
+}
+.item-right text{
+  color: #696969;
+}
+.item-title{
+  font-size: 35rpx;
+  padding-left: 20rpx;
+}
+.item-average{
+  color: #696969;
+  text-align: right;
+}
+.item-directors{
+  width: 480rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  overflow: hidden;
+}
+.item-casts{
+  width: 480rpx;
+  height: 80rpx;
+  line-height: 40rpx;
+  overflow: hidden;
+}

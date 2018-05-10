@@ -1,0 +1,23 @@
+<loading hidden="{{hiddenLoading}}">
+  加载中...
+ </loading>
+<view class="header">
+  <view>正在 <text style='color:red;font-weight: bold;'>热</text> 播</view>
+</view>
+<view class="main">
+  <view class="item" wx:for="{{inTheaters}}" wx:key="item.title" bindtap="goMovieDetail" data-movie_id="{{item.id}}">
+    <image src="{{item.images.large}}"></image>
+    <view class="item-right" >
+      <view class="item-title">{{item.title}}</view>
+      <view class="item-average">豆瓣评分：  <text style='color:red;'>{{item.rating.average}}</text> </view>
+      <view class="item-genres">类型：<text>{{item.genres}}</text></view>
+      <view class="item-year">年份： <text>{{item.year}}</text></view>
+      <view class="item-directors">导演:
+          <text wx:for="{{item.directors}}" wx:key="item.title">{{item.name}}/</text>
+      </view>
+      <view class="item-casts">主演:
+          <text wx:for="{{item.casts}}" wx:key="item.title">{{item.name}}/</text>
+      </view>
+    </view>
+  </view>
+</view>

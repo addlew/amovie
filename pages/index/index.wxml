@@ -10,12 +10,28 @@
 </swiper> 
 <view class="nav-box">
   <block wx:for="{{centerNavInfo}}"  wx:key="item.imgUrl">
-    <view class="nav-view">
-      <image class="nav-img" src="{{item.imgUrl}}" style="background-color: {{item.bgcolor}};"></image>
-      <text>{{item.title}}</text>
-    </view>
+    <navigator url="{{item.link}}" hover-class="navigator-hover">    
+        <view class="nav-view">
+          <image class="nav-img" src="{{item.imgUrl}}" style="background-color: {{item.bgcolor}};"></image>
+          <text>{{item.title}}</text>
+        </view>
+    </navigator>  
   </block> 
 </view>
 <view class="wn-tuijian" style="">
-    <text>为您推荐</text>
+    <text>百度云分享</text>
+</view>
+
+<view class="main">
+  <view class="item" wx:for="{{5}}" wx:key="item.title">
+    <image src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2517753454.webp"></image>
+    <view class="item-right">
+      <view class="item-title">头号玩家</view>
+      <view class="item-average">豆瓣评分：  <text style='color:red;'>8.9</text> </view>
+      <view class="item-genres">类型：<text>动作/科幻/奇幻</text></view>
+      <view class="item-year">年份： <text>2018</text></view>
+      <view class="item-directors">导演:<text>安东尼·罗素 / 乔·罗素安东尼·罗素</text></view>
+      <view class="item-casts">主演:<text>小罗伯特·唐尼/克里斯·海姆斯沃斯</text></view>
+    </view>
+  </view>
 </view>
