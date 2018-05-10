@@ -1,1 +1,31 @@
-/* pages/centernav/nav4/nav4.wxss */
+
+.header{
+  padding: 5rpx;
+  margin: 20rpx;
+  border: #ccc solid 2rpx;
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 5rpx #888888;
+  text-align: center;
+  padding-bottom: 10rpx;
+}
+.header image{
+  height: 300rpx;
+  width: 698rpx;
+}
+
+.main{
+  margin: 20rpx;
+  padding: 20rpx;
+  color: #696969;
+}
+.main-item{
+
+}
+.main-item text{
+  font-size: 33rpx;
+}
+.main-item view{
+  font-size: 30rpx;  
+  line-height: 50rpx;
+  
+}

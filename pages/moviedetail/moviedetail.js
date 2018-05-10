@@ -34,11 +34,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
-    this.setData({
-      hiddenLoading: !this.data.hiddenLoading
-    });
+  onLoad: function (options) {    
     var that = this
     that.setData({
       id: options.id
@@ -46,13 +42,12 @@ Page({
     console.log("id", options.id)
     that.getMovieDetail(options.id)
     that.getBaDuYun(options.id)
-    this.setData({
-      hiddenLoading: !this.data.hiddenLoading
-    });
+    
   },
   getBaDuYun: function (id) {
-    console.log("getBaDuYun");
     var that = this;
+    console.log("getBaDuYun");
+    
     wx.request({
       url: HOST + 'api/index/getBaDuYun.php',
       method: 'GET',

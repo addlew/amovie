@@ -1,2 +1,15 @@
-<!--pages/centernav/nav4/nav4.wxml-->
-<text>开发中，敬请期待</text>
+
+<view class="header">
+   <image  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526568307&di=497acac4a8056278f467c707775b468a&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0117e2571b8b246ac72538120dd8a4.jpg%401280w_1l_2o_100sh.jpg"></image>
+    <view>欢迎来到云竹影视</view>
+</view>
+
+<view class="main">
+  <view class="main-item"> <text>简介</text> 
+      <view >作者：从前不爱猕猴桃</view>
+      <view >功能定义：为喜爱电影人士提供最新影视资源、经典电影推荐等</view>
+      <view>资源更新：数据资源基于豆瓣api。百度云资源为手动更新，存在资源量少，链接易和谐的缺点。在线视频观看数据获取于免费VIP影院网站，优点是可免费播放VIP视频，缺点为播放需合适线路。</view>
+      
+  </view>
+
+</view>

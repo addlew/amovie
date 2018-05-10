@@ -1,4 +1,13 @@
-<!--pages/index/index.wxml-->
+<loading hidden="{{hiddenLoading}}">
+  加载中...
+ </loading>
+ 
+<view class="kf">  
+  <button  open-type="contact" > 
+    <image src="../../images/icon/kf.png"></image>
+  </button>
+</view>
+
 <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">    
     <block wx:for="{{adverInfo}}" wx:key="item.link">    
       <swiper-item>    
@@ -21,20 +30,7 @@
 <view class="wn-tuijian" style="">
     <text>百度云分享</text>
 </view>
-<!-- 
-<view class="main">
-  <view class="item" wx:for="{{indexMovie}}" wx:key="item.title">
-    <image src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2517753454.webp"></image>
-    <view class="item-right">
-      <view class="item-title">头号玩家</view>
-      <view class="item-average">豆瓣评分：  <text style='color:red;'>8.9</text> </view>
-      <view class="item-genres">类型：<text>动作/科幻/奇幻</text></view>
-      <view class="item-year">年份： <text>2018</text></view>
-      <view class="item-directors">导演:<text>安东尼·罗素 / 乔·罗素安东尼·罗素</text></view>
-      <view class="item-casts">主演:<text>小罗伯特·唐尼/克里斯·海姆斯沃斯</text></view>
-    </view>
-  </view>
-</view>-->
+
 <view class="main">
   <view class="item" wx:for="{{indexMovie}}" wx:key="item.title" bindtap="goMovieDetail" data-movie_id="{{item.id}}">
     <image src="{{item.images.large}}"></image>

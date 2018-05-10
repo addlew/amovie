@@ -20,12 +20,12 @@ Page({
     });
 
     var that = this
-    if (wx.getStorageSync("top250")) {// 本地如果有缓存，提前渲染
+    if (wx.getStorageSync("randMovie")) {// 本地如果有缓存，提前渲染
       that.setData({
-        top250: wx.getStorageSync("top250")
+        searchResult: wx.getStorageSync("randMovie")
       })
     }
-    this.getTop250();
+    this.getRandMovie();
 
     this.setData({
       hiddenLoading: !this.data.hiddenLoading
@@ -37,31 +37,34 @@ Page({
       url: '../moviedetail/moviedetail?id=' + e.currentTarget.dataset.movie_id
     })
   },
-  getTop250: function () {
-    console.log("getTop250");
+  getRandMovie: function () {
+    console.log("getRandMovie");
     var that = this;
     wx.request({
-      url: HOST + 'api/centernav/getTop250.php',
+      url: HOST + 'api/centernav/getRandMovie.php',
       method: 'GET',
       success: function (res) {
         if (res.statusCode === 200) {
-          console.log("getTop250 succeed");
-          var top250 = res.data.subjects
+          console.log("getRandMovie succeed");
+          var randMovie = res.data
           that.setData({ // 再次渲染
-            top250: top250
+            searchResult: randMovie
           })
-          console.log("覆盖top250缓存数据")
-          console.log(top250)
-          wx.setStorageSync("top250", top250) // 覆盖缓存数据
+          console.log("覆盖 randMovie 缓存数据")
+          console.log(randMovie)
+          wx.setStorageSync("randMovie", randMovie) // 覆盖缓存数据
         }
       },
       fail: function (e) {
-        console.log("getTop250请求失败"),
+        console.log("getRandMovie 请求失败"),
           console.log(e)
       }
     })
   },
   formBindsubmit:function(e){
+    this.setData({
+      hiddenLoading: !this.data.hiddenLoading
+    });
     console.log(e.detail.value.searchInput)
     var that = this;
     wx.request({
@@ -75,11 +78,13 @@ Page({
           console.log("getSearchResult succeed");
           var searchResult = res.data.subjects
           that.setData({ // 再次渲染
-            searchResult: searchResult
+            searchResult: searchResult,
+            hiddenLoading: !that.data.hiddenLoading
           })
           console.log("覆盖 searchResult 缓存数据")
           console.log(searchResult)
           wx.setStorageSync("searchResult", searchResult) // 覆盖缓存数据
+          
         }
       },
       fail: function (e) {

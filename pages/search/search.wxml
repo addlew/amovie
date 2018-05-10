@@ -4,9 +4,9 @@
 <view class="header">
   <view class="input">
   <form bindsubmit="formBindsubmit">
-      <input name="searchInput" placeholder="请输入电影名" auto-focus/> 
+      <input name="searchInput" placeholder="请输入电影名" auto-focus /> 
       <button formType="submit"><image src="../../images/icon/ss1.png"  ></image></button>        
-  </form>   
+  </form>     
   </view>
  
 </view>

@@ -15,18 +15,12 @@ Page({
    */
   onLoad: function (options) {
     var that=this
-    this.setData({
-      hiddenLoading: !that.data.hiddenLoading
-    })    
     if (wx.getStorageSync("inTheaters")) {// 本地如果有缓存，提前渲染
       that.setData({
         inTheaters: wx.getStorageSync("inTheaters")
       })
     }
     this.getInTheaters()
-    this.setData({
-      hiddenLoading: !that.data.hiddenLoading
-    })
   },
   goMovieDetail: function (e) {
     // console.log("弹出框", e.currentTarget.dataset)
@@ -34,9 +28,13 @@ Page({
       url: '../../moviedetail/moviedetail?id=' + e.currentTarget.dataset.movie_id
     })
   },
-  getInTheaters: function () {   
-    console.log("getInTheaters");
+  getInTheaters: function () {  
     var that = this;
+    that.setData({
+      hiddenLoading: !that.data.hiddenLoading
+    })
+    console.log("getInTheaters");
+    
     wx.request({
       url: HOST +'api/centernav/getInTheaters.php',
       method: 'GET',
@@ -45,7 +43,8 @@ Page({
           console.log("getInTheaters succeed");
           var inTheaters = res.data.subjects
           that.setData({ // 再次渲染
-            inTheaters: inTheaters
+            inTheaters: inTheaters,
+            hiddenLoading: !that.data.hiddenLoading
           })
           console.log("覆盖inTheaters缓存数据")
           console.log(inTheaters)

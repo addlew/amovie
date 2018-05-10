@@ -8,18 +8,29 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hiddenLoading: true,
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
     duration: 1000,
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getAdverInfo();//从后端获取centerNavInfo
-    this.getCenterNavInfo();//从后端获取centerNavInfo
+    var that=this
+    if (wx.getStorageSync("adverInfo")) {// 本地如果有缓存，提前渲染
+      that.setData({
+        adverInfo: wx.getStorageSync("adverInfo"),
+        centerNavInfo: wx.getStorageSync("centerNavInfo"),
+        indexMovie: wx.getStorageSync("indexMovie"),        
+      })
+    };
+  
+    this.getAdverInfo();//从后端获取 adverInfo
+    this.getCenterNavInfo();//从后端获取 centerNavInfo
     this.getIndexMovie();//从后端获取 indexMovie
   },
   
@@ -74,7 +85,7 @@ Page({
     })
   },
 
-  getIndexMovie:function(){    
+  getIndexMovie:function(){ 
     var that = this;
     wx.request({
       url: HOST + '/api/index/getIndexMovie.php',
@@ -86,7 +97,7 @@ Page({
         if (res.statusCode === 200) {
           var indexMovie = res.data
           that.setData({ // 再次渲染
-            indexMovie: indexMovie
+            indexMovie: indexMovie,
           })
           console.log("覆盖 indexMovie 缓存数据", indexMovie)
           //console.log(indexMovie)
